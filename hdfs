@@ -1,0 +1,27 @@
+start-dfs.sh
+
+hdfs dfs -ls /
+
+hdfs dfs -mkdir /user
+hdfs dfs -mkdir /user/hduser
+hdfs dfs -mkdir /user/hduser/input
+
+hdfs dfs -put /home/hduser/inputfile.txt /user/hduser/input
+
+hdfs dfs -ls /user/hduser/input
+
+hdfs dfs -cat /user/hduser/input/inputfile.txt
+
+hdfs dfs -get /user/hduser/input/inputfile.txt /home/hduser/output_copy.txt
+
+hdfs dfs -rm /user/hduser/input/inputfile.txt
+hdfs dfs -rm -r /user/hduser/output
+
+hdfs dfs -head <HDFS file path>
+
+hdfs dfs -tail <HDFS file path>
+
+hdfs dfs -cat /user/hduser/input/inputfile.txt | head -n 5
+
+nano /home/hduser/inputfile.txt
+

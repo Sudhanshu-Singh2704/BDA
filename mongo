@@ -1,0 +1,37 @@
+"C:\Program Files\MongoDB\Server\7.0\bin\mongosh.exe"
+
+use company
+
+db.createCollection("employees")
+
+db.employees.insertOne({ name: "Alice", department: "HR", salary: 35000 })
+
+db.employees.insertMany([
+  { name: "Bob", department: "IT", salary: 45000 },
+  { name: "Charlie", department: "Finance", salary: 40000 }
+])
+
+db.employees.find()
+
+db.employees.find().pretty()
+
+db.employees.find({ department: "IT" })
+
+db.employees.updateOne(
+  { name: "Alice" },
+  { $set: { salary: 38000 } }
+)
+
+db.employees.updateMany(
+  { department: "IT" },
+  { $set: { department: "Information Technology" } }
+)
+
+db.employees.aggregate([
+  { $group: { _id: "$department", avgSalary: { $avg: "$salary" } } }
+])
+
+db.employees.aggregate([
+  { $group: { _id: "$department", maxSalary: { $max: "$salary" } } }
+])
+
